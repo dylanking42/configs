@@ -1,0 +1,10 @@
+alias.undo=reset --hard
+alias.test=push -f ci HEAD:master
+alias.st=status
+alias.ci=commit
+alias.br=branch
+alias.co=checkout
+alias.ch=checkout
+alias.df=diff
+alias.lg=log -p
+alias.who=shortlog -s --
