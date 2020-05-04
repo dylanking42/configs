@@ -8,4 +8,4 @@ set path+=**
 set wildmenu
 set statusline+=%F
 set laststatus=2
-colorscheme elflord
+colorscheme pablo
