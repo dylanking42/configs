@@ -4,3 +4,5 @@ alias l='ls -lrt'
 function pretty_csv {
     column -t -s, "$@" | less -F -S -X -K
 }
+LS_COLORS=$LS_COLORS:'di=0;35:'
+export LS_COLORS
