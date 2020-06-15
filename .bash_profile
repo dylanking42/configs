@@ -6,3 +6,6 @@ function pretty_csv {
 }
 LS_COLORS=$LS_COLORS:'di=1;33:'
 export LS_COLORS
+
+alias metree='tree --charset ASCII'
+# errors with any other charset on secureCRT w. XTERM
