@@ -1,0 +1,61 @@
+# .bash_profile
+
+HISTSIZE=50000
+HISTFILESIZE=50000
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+#PATH=/opt/software/Anaconda3-5.1.0/bin:$PATH:$HOME/.local/bin:$HOME/bin
+#PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+
+export DRIVER_PATH=$HOME/repos/graph-workstream/drivers/postgresql-42.2.12.jar
+export SQOOP_HOME=/usr/hdp/current/sqoop-client
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/opt/software/Anaconda3-2019.10/condabin:/opt/software/Anaconda3-2019.10/bin
+export JAVA_HOME=/etc/alternatives/java_sdk
+export PYSPARK_PYTHON=/opt/software/Anaconda3-5.1.0/bin/python3.6
+export HADOOP_HOME=${HADOOP_HOME:-/usr/hdp/3.1.4.0-315/hadoop}
+export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-/usr/hdp/3.1.4.0-315/hadoop/conf}
+LS_COLORS=$LS_COLORS:'di=1;33' ; export LS_COLORS
+#export PATH
+
+alias dc='conda deactivate';
+dc
+
+startup () {
+    PS1='\t|\u@\h:\w$ '
+}
+startup
+
+labstart () {
+   jupyter-lab --ip=0.0.0.0 --port=4040 &       
+}
+
+startpyspark () {
+    pyspark  --num-executors 20 --executor-memory 20G --executor-cores 10 --driver-memory 20G    
+}
+ #ps -ef | grep python //finding a pid or process
+testme () {
+    $PYSPARK_PYTHON -m unitttest discover   
+}
+
+alias l='ls -lhrt';
+
+go_edge () {
+    ssh -i ~/config/pubs/edge_node 1tpsb@10.207.84.70 
+}
+
+alias pyspark3='/opt/software/spark/spark-3.0.0-bin-hadoop2.7/bin/pyspark'
+alias spark3shell='/opt/software/spark/spark-3.0.0-bin-hadoop2.7/bin/spark-shell'
+alias spark3submit='/opt/software/spark/spark-3.0.0-bin-hadoop2.7/bin/spark-submit'
+
+# this will break spark submit being able to handle args
+# https://stackoverflow.com/questions/42249982/systemexit-2-error-when-calling-parse-args/42250234
+# ipython tries to take over spark submit and isn't able to deal with command line args to scripts
+export PYSPARK_DRIVER_PYTHON=ipython
+
