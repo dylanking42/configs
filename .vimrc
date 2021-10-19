@@ -16,11 +16,7 @@ colorscheme monokai
 set relativenumber
 set ruler
 set showcmd
-"set tabstop=4
-"set softtabstop=4
-"
-set expandtab
-set shiftwidth=4
+
 set autoindent
 set smartindent
 
@@ -34,3 +30,9 @@ set smarttab
 
 "
 set backspace=indent,eol,start
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tmsvg/pear-tree'
+call plug#end()
